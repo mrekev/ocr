@@ -1,6 +1,5 @@
 package lt.mrekev.ocr;
 
-import static org.bytedeco.javacpp.lept.pixDestroy;
 import static org.bytedeco.javacpp.lept.pixRead;
 
 import org.bytedeco.javacpp.BytePointer;
