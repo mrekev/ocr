@@ -1,15 +1,17 @@
-import org.bytedeco.javacpp.*;
+import org.bytedeco.javacpp.BytePointer;
+import org.bytedeco.leptonica.PIX;
+import org.bytedeco.tesseract.TessBaseAPI;
 import org.junit.Test;
 
-import static org.bytedeco.javacpp.lept.*;
-import static org.bytedeco.javacpp.tesseract.*;
-import static org.junit.Assert.assertThat;
+import static org.bytedeco.leptonica.global.lept.pixDestroy;
+import static org.bytedeco.leptonica.global.lept.pixRead;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class BasicTesseractExampleTest {
-    
+
     @Test
-    public void givenTessBaseApi_whenImageOcrd_thenTextDisplayed() throws Exception {
+    public void givenTessBaseApi_whenImageOcrd_thenTextDisplayed(){
         BytePointer outText;
 
         TessBaseAPI api = new TessBaseAPI();
@@ -25,7 +27,7 @@ public class BasicTesseractExampleTest {
         // Get OCR result
         outText = api.GetUTF8Text();
         String string = outText.getString();
-        assertTrue(!string.isEmpty());
+        assertFalse(string.isEmpty());
         System.out.println("OCR output:\n" + string);
 
         // Destroy used object and release memory
